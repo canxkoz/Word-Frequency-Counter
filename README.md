@@ -1,4 +1,5 @@
 # Word-Frequency-Counter
+
 ###Histogram1.py
 Calculates the frequency of letters in an array and returns a Histogram plot of all of the letters.
 ###Histogram2.py
