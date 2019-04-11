@@ -1,0 +1,11 @@
+Works on registration and ortho-rectification of sattellite images, geometric and radiometric calibration, semantic image analysis, image retrieval, 3D imaging, pattern recognition, high performance computing, 3D  visualization.
+
+Main work areas of Data and Image Processing Department are registration, ortho-rectification, geometric and radiometric calibration of images of low orbit earth observation satellites RASAT and GOKTURK-2, automated ballistic image analysis and recognition for bullets and cartridge cases.
+
+Data and Image Processing Department  developed the following R&D Projects on semantic image analysis, image retrieval, 3D imaging, pattern and object recognition and high performance computing areas.
+
+Naval Platform Recognition (DUPT)
+Balistic Analysis System (BALISTIKA)
+Digital Recording, Archiving and Analyzing System of Turkish Radio and Television Supreme Council (SKAAS)
+Automatic concept recognition system for SKAAS (KAVTAN)
+Intelligent Surveillance Systems (AGS)e.
