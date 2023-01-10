@@ -12,3 +12,17 @@ Reads the contents of a .txt fle counts the reoccurence of words and returns the
 You only have to enter the name of your .txt file for once and it will do the same things that Histogram4.py does.
 ### Histogram6.py
 Asks the user "How many of the top words do you wish to print?" and depending on the input, prints an histogram of the top n words in the .txt file.
+### create-word-frequency-report.py
+Reads the contents of a .txt fle counts the reoccurence of words and returns the frequency of words as a histogram. 
+
+## CLI Usage
+
+```
+python3 create-word-frequency-report.py Filename topwords
+```
+
+For help, simply type
+
+```
+python3 create-word-frequency-report.py -h
+```

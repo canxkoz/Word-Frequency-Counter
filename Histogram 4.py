@@ -1,19 +1,11 @@
 from collections import Counter
-import numpy as np
 import re
-import chardet
-import matplotlib as mpl
-mpl.use('MacOSX') # optional (depends on user's operating system)
-mpl.rcParams['text.usetex'] = True
-mpl.rcParams['text.latex.preamble'] = [r'\usepackage{amsmath}']
-import matplotlib.pyplot as plt
 
 def openfile(Filename):
-    with open(Filename, 'rb') as f:
-        result = chardet.detect(f.read())
-        f.seek(0)
-        txt = f.read().decode(result['encoding'])
-    return txt
+    fh = open("TEXT.txt", "r+")
+    str = fh.read()
+    fh.close()
+    return str
 
 def removegarbage(str):
     str = re.sub(r'\W+', ' ', str)
@@ -26,31 +18,12 @@ def getwordbins(words):
         cnt[word] += 1
     return cnt
 
-def plot_histogram(nums,labels,Filename=None):
-    plt.figure(1,figsize=(16,8))
-    bins = np.arange(0,len(labels))
-    bar_width = 0.8*(bins[1]-bins[0])
-    plt.bar(bins,nums,bar_width)
-    plt.xticks(bins,labels,rotation=90, ha='center',fontsize=9)
-    if Filename is not None:
-        plt.title(f'Word Frequency Report for {Filename}')
-    else:
-        plt.title('Word Frequency Report')
-    plt.tight_layout()
-    plt.show(block=True)
-
 def main(Filename, topwords):
-    txt = openfile(Filename)
+    txt = openfile("TEXT.txt")
     txt = removegarbage(txt)
     words = txt.split(' ')
     bins = getwordbins(words)
-    nums = []
-    labels = []
     for key, value in bins.most_common(topwords):
-        if key not in ['also','have','from','the','of','are','and','in','to','for','a','will','be','on','with','is','1','2','3','4','5','6','7','8','9','by','this','at','as','we','can','has','that','an','which','or'] and len(key) > 1:
-            nums.append(value)
-            labels.append(key)
-    plot_histogram(nums,labels,Filename)
-    
+        print (key,value)
 
-main('MIT-QEERISoW_detailed.txt', 100)
+main('speech.txt', 500)
