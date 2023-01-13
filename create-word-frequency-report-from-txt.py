@@ -56,7 +56,7 @@ def main():
     nums = []
     labels = []
     for key, value in bins.most_common(topwords):
-        if key not in ['we','our','they','i','mr','ms','mrs','one','two','said','also','have','from','the','of','are','and','in','to','for','a','will','be','on','with','is','1','2','3','4','5','6','7','8','9','by','this','at','as','we','can','has','that','an','which','or'] and len(key) > 1:
+        if key not in ['we','our','they','i','mr','ms','was','mrs','one','two','said','also','have','from','the','of','are','and','et','al','were','in','to','for','a','will','be','on','with','is','1','2','3','4','5','6','7','8','9','by','this','at','as','we','can','has','that','an','which','or'] and len(key) > 1:
             nums.append(value)
             labels.append(key)
     plot_histogram(nums,labels,Filename)
