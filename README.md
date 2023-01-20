@@ -15,7 +15,7 @@ Asks the user "How many of the top words do you wish to print?" and depending on
 ### create-word-frequency-report-txt.py
 Reads the contents of a .txt fle counts the reoccurence of words and returns the frequency of words as a histogram. 
 ### create-word-frequency-report-pdf.py
-Reads the contents of a .pdf fle counts the reoccurence of words and returns the frequency of words as a histogram. (Note, the pdf reading process used is not optimal. You may find better results using Adobe Acrobat to export a PDF to a plain .txt file and then using `create-word-frequency-report-txt.py`)
+Reads the contents of a .pdf fle counts the reoccurence of words and returns the frequency of words as a histogram. 
 
 ## CLI Usage
 

@@ -3,8 +3,9 @@ import numpy as np
 import re
 import chardet
 import matplotlib as mpl
-import PyPDF2
+import fitz
 import sys
+import plotly.graph_objects as go
 mpl.use('MacOSX') # optional (depends on user's operating system)
 mpl.rcParams['text.usetex'] = True
 mpl.rcParams['text.latex.preamble'] = [r'\usepackage{amsmath}']
@@ -13,13 +14,11 @@ import argparse
 
 def openfile(Filename):
     # open the PDF file
-    with open(Filename, 'rb') as file:
-        # create a PDF object
-        pdf = PyPDF2.PdfReader(file)
-        # iterate over every page in the PDF
-        for page in range(len(pdf.pages)):
-            # extract the text from the page
-            txt = pdf.pages[page].extract_text()
+    pdf = fitz.open(Filename)
+    txt = ''
+    for page in pdf:
+        # extract the text from the page
+        txt += page.get_text()
     return txt
 
 def removegarbage(str):
@@ -45,6 +44,16 @@ def plot_histogram(nums,labels,Filename=None):
         plt.title('Word Frequency Report')
     plt.tight_layout()
     plt.show(block=True)
+
+def plotly_histogram(nums, labels, Filename=None):
+    fig = go.Figure(data=[go.Bar(x=labels, y=nums)])
+    fig.update_layout(xaxis_tickangle=-45)
+    if Filename is not None:
+        fig.update_layout(title=f'Word Frequency Report for {Filename}')
+    else:
+        fig.update_layout(title='Word Frequency Report')
+    fig.show()
+
     
 def main():
     parser = argparse.ArgumentParser(description='Plot a histogram of the top N most common words in a text file.')
@@ -61,10 +70,10 @@ def main():
     nums = []
     labels = []
     for key, value in bins.most_common(topwords):
-        if key not in ['we','our','they','i','mr','ms','mrs','one','two','said','also','have','from','the','of','are','and','in','to','for','a','will','be','on','with','is','1','2','3','4','5','6','7','8','9','by','this','at','as','we','can','has','that','an','which','or'] and len(key) > 1:
+        if key not in ['were','was','these','into','no','would','how','but','there','over','only','than','some','each','when','may','its','any','does','their','it','not','his','yet','what','all','we','our','they','i','mr','ms','mrs','one','two','said','also','have','from','the','of','are','and','in','to','for','a','will','be','on','with','is','1','2','3','4','5','6','7','8','9','by','this','at','as','we','can','has','that','an','which','or'] and len(key) > 1:
             nums.append(value)
             labels.append(key)
-    plot_histogram(nums,labels,Filename)
+    plotly_histogram(nums,labels,Filename)
 
 if __name__ == "__main__":
     sys.exit(main())
